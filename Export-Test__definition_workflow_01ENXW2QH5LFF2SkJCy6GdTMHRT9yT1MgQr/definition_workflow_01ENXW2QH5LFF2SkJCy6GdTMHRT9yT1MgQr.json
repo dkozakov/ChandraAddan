@@ -1,0 +1,184 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01ENXW2QH5LFF2SkJCy6GdTMHRT9yT1MgQr",
+    "name": "Export Test5.2.0",
+    "title": "Export Test5.2.0",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": null,
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Export Test5.2.0",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": true,
+        "target_group": {
+          "target_group_id": "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL",
+          "run_on_all_targets": false,
+          "selected_target_types": [
+            "web-service.endpoint"
+          ],
+          "use_criteria": {
+            "choose_target_using_algorithm": "choose_all_with_matching_criteria",
+            "conditions": [
+              {
+                "operator": "ne",
+                "left_operand": "$targetgroup.web-service endpoint.input.description$",
+                "right_operand": "test"
+              },
+              {
+                "operator": "eq",
+                "left_operand": "$targetgroup.web-service endpoint.input.no_runtime_user$",
+                "right_operand": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01ENXW477YHDZ1E9YZOLhw8nucPn7IaMel8",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "automation"
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "triggers": {
+    "triggerschedule_01ENXW52MN22L7c3fxm4A8LqredFbQuVf9W": {
+      "workflow_id": "definition_workflow_01ENXW2QH5LFF2SkJCy6GdTMHRT9yT1MgQr",
+      "name": "schedule test",
+      "title": "",
+      "lowercase_name": "schedule.schedule_test",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01ENXW1U442BL3XoFzR5rNDlKibtQEDvXax",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01ENXW52MN22L7c3fxm4A8LqredFbQuVf9W",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01ENXW1U442BL3XoFzR5rNDlKibtQEDvXax": {
+      "unique_name": "schedule_01ENXW1U442BL3XoFzR5rNDlKibtQEDvXax",
+      "name": "Schedule 2020-03-26T16:16:44.742930179Z",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_01ENXW0XPI2FD4hJEqTpCdJ83l0QxkOQqEE",
+        "timezone": "America/Chicago",
+        "starttime": "17:55",
+        "interval_hours": 0,
+        "interval_minutes": 0,
+        "number_of_times": 1,
+        "display_name": "Schedule 2020-03-26T16:16:44.742930179Z",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "calendars": {
+    "calendar_recurring_01ENXW0XPI2FD4hJEqTpCdJ83l0QxkOQqEE": {
+      "unique_name": "calendar_recurring_01ENXW0XPI2FD4hJEqTpCdJ83l0QxkOQqEE",
+      "name": "Calendar 2020-03-26T16:16:44.742930179Z",
+      "title": "Calendar 2020-03-26T16:16:44.742930179Z",
+      "schema_id": "0191KHYW58KGL2bngqv9EgwnGu1wTrxR2tF",
+      "base_type": "calendar",
+      "type": "calendar.recurring",
+      "properties": {
+        "date_range": {
+          "end_date": "2021-05-18",
+          "start_date": "2020-02-11"
+        },
+        "repeats": {
+          "every": 1,
+          "on": {
+            "day": "none",
+            "day_num": 0,
+            "day_of": "none"
+          },
+          "period": "daily"
+        }
+      },
+      "version": "1.0.0",
+      "object_type": "calendar_recurring"
+    }
+  },
+  "targets": {
+    "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa": {
+      "unique_name": "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
+      "name": "GOOGLE",
+      "title": "GOOGLE",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "GOOGLE",
+        "host": "www.google.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt": {
+      "unique_name": "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt",
+      "name": "YAHOO",
+      "title": "YAHOO",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "YAHOO",
+        "host": "www.yahoo.com",
+        "ignore_proxy": false,
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  },
+  "target_groups": {
+    "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL": {
+      "unique_name": "target_group_01ENY9U675FMD4ez9Lw6JQZhZl1O435piOL",
+      "name": "GOOGLE YAHOO",
+      "title": "GOOGLE YAHOO",
+      "type": "generic.target_group",
+      "base_type": "target_group",
+      "version": "1.0.0",
+      "targets": [
+        {
+          "data_target_type": "web-service.endpoint",
+          "view_target_type": "web-service.endpoint",
+          "include_all_targets": false,
+          "selected_target_ids": [
+            "definition_target_0192FVT23JP6Z3twdcxyQvoWn9Qs5uTdvFa",
+            "definition_target_01ENY7B71QN4I5hpsyuFDkR9TU8goAQfujt"
+          ]
+        }
+      ],
+      "object_type": "target_group"
+    }
+  }
+}

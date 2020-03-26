@@ -1,0 +1,682 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01DXNP98Y1HVO6dloQKoFsifUXTNVXc0O2F",
+    "name": "Copy-Test sample workflow",
+    "title": "Copy-Test sample workflow",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Test",
+          "scope": "input",
+          "name": "Local String",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01DXNP98FFJHX1U0eoQ6iaCCle5EM2AFy8E",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Copy-Test sample workflow",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01DXNPAHI0V575BKlqz0Yc9BtgeZso9yMnd",
+        "name": "To Upper",
+        "title": "To Upper",
+        "type": "core.string2upper",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "To Upper",
+          "skip_execution": false,
+          "source": "$global.variable_01ABHKN5P2NM84UwcdE2i176k57p0uhkYUT.global.variable_01ABHKN5P2NM84UwcdE2i176k57p0uhkYUT$\n$global.variable_01DXNKVK4G42C5vnBfVVpMvtminSQuhFDHk.global.variable_01DXNKVK4G42C5vnBfVVpMvtminSQuhFDHk$\n$global.variable_01DXNLD9QXRMT2LApmoU6dRHyHlhUcnTPKS.global.variable_01DXNLD9QXRMT2LApmoU6dRHyHlhUcnTPKS$\n$global.variable_01DXNLSW16WJK3kdpsHxjwkKTZqCK5vamCt.global.variable_01DXNLSW16WJK3kdpsHxjwkKTZqCK5vamCt$\n$global.variable_01DXNM9TY39ON4xNvRzaoa1C6beEkFWZAtr.global.variable_01DXNM9TY39ON4xNvRzaoa1C6beEkFWZAtr$\n$global.variable_01AE1MEE27DT54BK2i4yxpU8b6G8yAgNjhr.global.variable_01AE1MEE27DT54BK2i4yxpU8b6G8yAgNjhr[-1].PosyPayload$"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01DXNPB4S7RKA2i3yLIn4ofpaxbsbafIOfF",
+        "name": "Sleep",
+        "title": "Sleep",
+        "type": "core.sleep",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Sleep",
+          "skip_execution": false,
+          "sleep_interval": 1
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01DXNPBDD1F521kParjF5W8GlYTmgkOgM0G",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01DXNPBM2TE3U22HzfOOYVQ1yFPIE0FdbF3",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNPC15PBVZ1jnE5oY5wuxM8weYm0O5N6",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01DXNPC9D9JEQ5RDe7m9sdw1vqGgMIpAq8R",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNPCNP5L3I3DaG1WkVlGFg6cyAnlbAYM",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01DXNPCVZJOC310y5FgXdFAiMXO1hlGM4H7",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNPDL34QQW2UgDMwnfrhSkJDX7knCeVH",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01DXNPDT3TEE24FTIhsCy2HeqrWuFgsHgfd",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNPE9CLPN10nCijWrZdNDIaFJw15XK7U",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01DXNQ1TKRD800GNaUb5wqVllYtaNIq940z",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01DXNQ1V5XHPX4Buftl7dgIYF8pZIeDk9K3",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNQ1WKPYOC5fhSeHC5Xp1l5lkW0KESyU",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01DXNQ1XLX37M027sQm07Zhmq6exsruHj9X",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNQ1ZAJ6016nJoDie3IpBf1NBMj5pW2g",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01DXNQ20CYSBO0XdQ4xEpuRVJqxxRF3XnsX",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNQ21IG0AU2MhPmQwAaW0Ibgfcbm1HXR",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01DXNQ22NSBN23NBVeGRsOeybF6eJbk2kaE",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01DXNQ245K9XY0nriUE8iIsr6LqvIZEUvqf",
+                "name": "Generic CCS API Request",
+                "title": "Generic CCS API Request",
+                "type": "ccs.api_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "api_call_method": "GET",
+                  "continue_on_failure": false,
+                  "display_name": "Generic CCS API Request",
+                  "relative_url": "be-console/api/v1/variables",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01f9IQgvQRJv3tvlqwR145Bbrye0toH0Q"
+                  }
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "triggers": {
+    "triggerschedule_01DXNPA3R928U6loGoAIBjCVIOxjUOktrgX": {
+      "workflow_id": "definition_workflow_01DXNP98Y1HVO6dloQKoFsifUXTNVXc0O2F",
+      "name": "Triggre Send Email",
+      "title": "",
+      "lowercase_name": "schedule.triggre_send_email",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01DUAJN4P7PQT3awyetQHvy62v44LRuCF1D",
+      "version": "1.0.0",
+      "disabled": false,
+      "unique_name": "triggerschedule_01DXNPA3R928U6loGoAIBjCVIOxjUOktrgX",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01DUAJN4P7PQT3awyetQHvy62v44LRuCF1D": {
+      "unique_name": "schedule_01DUAJN4P7PQT3awyetQHvy62v44LRuCF1D",
+      "name": "GC",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "America/Chicago",
+        "starttime": "12:35",
+        "interval_hours": 0,
+        "interval_minutes": 0,
+        "number_of_times": 1,
+        "display_name": "GC",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "variables": {
+    "variable_01ABHKN5P2NM84UwcdE2i176k57p0uhkYUT": {
+      "unique_name": "variable_01ABHKN5P2NM84UwcdE2i176k57p0uhkYUT",
+      "properties": {
+        "value": false,
+        "scope": "global",
+        "name": "Boolean",
+        "type": "datatype.boolean",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_01AE1MEE27DT54BK2i4yxpU8b6G8yAgNjhr": {
+      "unique_name": "variable_01AE1MEE27DT54BK2i4yxpU8b6G8yAgNjhr",
+      "schema_id": "tabletype_01AE1APMG8VE56ySmqp4AdQg8EE7wNSYUad",
+      "properties": {
+        "value": [
+          {
+            "column_data": {
+              "Name": "Calculate Date",
+              "PosyPayload": "\"type\": \"generic.workflow\",     \"base_type\": \"workflow\"   },   \"action\": {     \"schema_id\": \"core.calculate_date\",     \"base_type\": \"activity\",     \"name\": \"Calculate Date\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Calculate Date\"     },     \"title\": \"Calculate Date\"   } }",
+              "PutPayload": "\"title\": \"Calculate Date\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Calculate Date\",     \"skip_execution\": false,     \"original_date\": \"02-01-2018\",     \"adjustment\": 55   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Calculate Date Time Difference",
+              "PosyPayload": "\"type\": \"core.calculate_date\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.calculate_date_time_difference\",     \"type\": \"core.calculate_date_time_difference\",     \"base_type\": \"activity\",     \"name\": \"Calculate Date Time Difference\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Calculate Date Time Difference\"     },     \"title\": \"Calculate Date Time Difference\"   } }",
+              "PutPayload": "\"title\": \"Calculate Date Time Difference\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Calculate Date Time Difference\",     \"skip_execution\": false,     \"original_date\": \"Mon, 02 Jan 2018 15:04:05 MST\",     \"subtract_date\": \"Mon, 01 Jan 2018 15:04:05 MST\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Convert Json to Xml",
+              "PosyPayload": "\"type\": \"core.calculate_date_time_difference\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.json2xml\",     \"type\": \"core.json2xml\",     \"base_type\": \"activity\",     \"name\": \"Convert Json to Xml\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Convert Json to Xml\"     },     \"title\": \"Convert Json to Xml\"   } }",
+              "PutPayload": "\"title\": \"Convert Json to Xml\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Convert Json to Xml\",     \"skip_execution\": false,     \"input_json\": \"{\\\"name\\\":\\\"cisco\\\"}\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Convert Xml to Json",
+              "PosyPayload": "\"type\": \"core.json2xml\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.xml2json\",     \"type\": \"core.xml2json\",     \"base_type\": \"activity\",     \"name\": \"Convert Xml to Json\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Convert Xml to Json\"     },     \"title\": \"Convert Xml to Json\"   } }",
+              "PutPayload": "\"title\": \"Convert Xml to Json\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Convert Xml to Json\",     \"skip_execution\": false,     \"input_xml\": \"\u003cname\u003ecisco\u003c/name\u003e\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Escape Regex Metacharacter",
+              "PosyPayload": "\"type\": \"core.xml2json\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.escape_regex\",     \"type\": \"core.escape_regex\",     \"base_type\": \"activity\",     \"name\": \"Escape Regex Metacharacters\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Escape Regex Metacharacters\"     },     \"title\": \"Escape Regex Metacharacters\"   } }",
+              "PutPayload": "\"title\": \"Escape Regex Metacharacters\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Escape Regex Metacharacters\",     \"skip_execution\": false,     \"source\": \"\\\\\\\\cat\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Find String",
+              "PosyPayload": "\"type\": \"core.escape_regex\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.find_string\",     \"type\": \"core.find_string\",     \"base_type\": \"activity\",     \"name\": \"Find String\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Find String\"     },     \"title\": \"Find String\"   } }",
+              "PutPayload": "\"title\": \"Find String\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Find String\",     \"skip_execution\": false,     \"source\": \"automation\",     \"searched_string\": \"auto\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Format Date",
+              "PosyPayload": "\"type\": \"core.find_string\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.format_date\",     \"type\": \"core.format_date\",     \"base_type\": \"activity\",     \"name\": \"Format Date\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"use_custom_format\": false,       \"display_name\": \"Format Date\"     },     \"title\": \"Format Date\"   } }",
+              "PutPayload": "\"title\":\"Format Date\",\"properties\":{\"continue_on_failure\":false,\"display_name\":\"Format Date\",\"skip_execution\":false,\"use_custom_format\":false,\"format_string\":\"02-01-2006\",\"original_date\":\"2006-01-02T15:04:05Z\"}}"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "JSONPath Query",
+              "PosyPayload": "\"type\": \"core.format_date\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"corejava.jsonpathquery\",     \"type\": \"corejava.jsonpathquery\",     \"base_type\": \"activity\",     \"name\": \"JSONPath Query\",     \"properties\": {       \"action_timeout\": 180,       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"JSONPath Query\"     },     \"title\": \"JSONPath Query\"   } }",
+              "PutPayload": "\"title\":\"JSONPath Query\",\"properties\":{\"action_timeout\":180,\"continue_on_failure\":false,\"display_name\":\"JSONPath Query\",\"skip_execution\":false,\"input_json\":\"{\\n  \\\"name\\\": \\\"cisco\\\"\\n}\",\"jsonpath_queries\":[{\"jsonpath_query_type\":\"string\",\"jsonpath_query\":\"$.name\",\"jsonpath_query_name\":\"name\"}]}}"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Match Regular Expression",
+              "PosyPayload": "\"type\": \"corejava.jsonpathquery\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.matchregex\",     \"type\": \"core.matchregex\",     \"base_type\": \"activity\",     \"name\": \"Match Regular Expression\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Match Regular Expression\"     },     \"title\": \"Match Regular Expression\"   } }",
+              "PutPayload": "\"title\":\"Match Regular Expression\",\"properties\":{\"continue_on_failure\":false,\"display_name\":\"Match Regular Expression\",\"skip_execution\":false,\"input_regex\":\".*\",\"input_string\":\"abcd\"}}"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Parse Date",
+              "PosyPayload": "\"type\": \"core.matchregex\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.parse_date\",     \"type\": \"core.parse_date\",     \"base_type\": \"activity\",     \"name\": \"Parse Date\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"use_custom_format\": false,       \"display_name\": \"Parse Date\"     },     \"title\": \"Parse Date\"   } }",
+              "PutPayload": "\"title\":\"Parse Date\",\"properties\":{\"continue_on_failure\":false,\"display_name\":\"Parse Date\",\"skip_execution\":false,\"use_custom_format\":false,\"format_string\":\"02 Jan 06 15:04 MST\",\"input_string\":\"01 jan 18 15:55 MST\"}}"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Replace String",
+              "PosyPayload": "\"type\": \"core.parse_date\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.replacestring\",     \"type\": \"core.replacestring\",     \"base_type\": \"activity\",     \"name\": \"Replace String\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Replace String\"     },     \"title\": \"Replace String\"   } }",
+              "PutPayload": "\"title\": \"Replace String\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Replace String\",     \"skip_execution\": false,     \"input_string\": \"working fine\",     \"replace_list\": [       {         \"replaced_string\": \"fine\",         \"replacement_string\": \"expected\"       }     ]   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Sleep",
+              "PosyPayload": "\"type\": \"core.replacestring\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.sleep\",     \"type\": \"core.sleep\",     \"base_type\": \"activity\",     \"name\": \"Sleep\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Sleep\"     },     \"title\": \"Sleep\"   } }",
+              "PutPayload": "\"title\": \"Sleep\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Sleep\",     \"skip_execution\": false,     \"sleep_interval\": 2   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Split String",
+              "PosyPayload": "\"type\": \"core.sleep\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.splitstring\",     \"type\": \"core.splitstring\",     \"base_type\": \"activity\",     \"name\": \"Split String\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Split String\"     },     \"title\": \"Split String\"   } }",
+              "PutPayload": "\"title\": \"Split String\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Split String\",     \"skip_execution\": false,     \"input_string\": \"a,b,c\",     \"boundaries\": [       {         \"boundary\": \",\"       }     ]   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Substring",
+              "PosyPayload": "\"type\": \"core.splitstring\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.substring\",     \"type\": \"core.substring\",     \"base_type\": \"activity\",     \"name\": \"Substring\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"Substring\"     },     \"title\": \"Substring\"   } }",
+              "PutPayload": "\"title\": \"Substring\",   \"properties\": {     \"begin\": 5,     \"continue_on_failure\": false,     \"display_name\": \"Substring\",     \"end\": 8,     \"skip_execution\": false,     \"source\": \"created by worklfow\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "To Lower",
+              "PosyPayload": "\"type\": \"core.substring\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.string2lower\",     \"type\": \"core.string2lower\",     \"base_type\": \"activity\",     \"name\": \"To Lower\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"To Lower\"     },     \"title\": \"To Lower\"   } }",
+              "PutPayload": "\"title\": \"To Lower\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"To Lower\",     \"skip_execution\": false,     \"source\": \"AUTOMATION\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "To Upper",
+              "PosyPayload": "\"type\": \"core.string2lower\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.string2upper\",     \"type\": \"core.string2upper\",     \"base_type\": \"activity\",     \"name\": \"To Upper\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"To Upper\"     },     \"title\": \"To Upper\"   } }",
+              "PutPayload": "\"title\": \"To Upper\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"To Upper\",     \"skip_execution\": false,     \"source\": \"automation\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "Trim String",
+              "PosyPayload": "\"type\": \"core.string2upper\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.trim_string\",     \"type\": \"core.trim_string\",     \"base_type\": \"activity\",     \"name\": \"Trim String\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"trim_leading\": false,       \"trim_trailing\": false,       \"display_name\": \"Trim String\"     },     \"title\": \"Trim String\"   } }",
+              "PutPayload": "\"title\": \"Trim String\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"Trim String\",     \"skip_execution\": false,     \"trim_leading\": true,     \"trim_trailing\": true,     \"source\": \"\\\"this action is use to trim the charcters\\\"\",     \"characters_to_trim\": \"\\\"\"   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "XPath Query",
+              "PosyPayload": "\"type\": \"core.trim_string\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.xpathquery\",     \"type\": \"core.xpathquery\",     \"base_type\": \"activity\",     \"name\": \"XPath Query\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"XPath Query\"     },     \"title\": \"XPath Query\"   } }",
+              "PutPayload": "\"title\": \"XPath Query\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"XPath Query\",     \"skip_execution\": false,     \"input_xml\": \"\u003c?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?\u003e\\n\u003cbookstore\u003e\\n  \u003cbook\u003e\\n    \u003ctitle lang=\\\"en\\\"\u003eHarry Potter\u003c/title\u003e\\n    \u003cprice\u003e29.99\u003c/price\u003e\\n  \u003c/book\u003e\\n  \u003cbook\u003e\\n    \u003ctitle lang=\\\"en\\\"\u003eLearning XML\u003c/title\u003e\\n    \u003cprice\u003e39.95\u003c/price\u003e\\n  \u003c/book\u003e\\n\u003c/bookstore\u003e\",     \"xpath_queries\": [       {         \"xpath_query_type\": \"string\",         \"xpath_query\": \"//book\",         \"xpath_query_name\": \"book\"       }     ]   } }"
+            }
+          },
+          {
+            "column_data": {
+              "Name": "XSL Transform",
+              "PosyPayload": "\"type\": \"core.xpathquery\",     \"base_type\": \"activity\"   },   \"action\": {     \"schema_id\": \"core.xsl_transform\",     \"type\": \"core.xsl_transform\",     \"base_type\": \"activity\",     \"name\": \"XSL Transform\",     \"properties\": {       \"continue_on_failure\": false,       \"skip_execution\": false,       \"display_name\": \"XSL Transform\"     },     \"title\": \"XSL Transform\"   } }",
+              "PutPayload": "\"title\": \"XSL Transform\",   \"properties\": {     \"continue_on_failure\": false,     \"display_name\": \"XSL Transform\",     \"skip_execution\": false,     \"stylesheet\": \"\u003c?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?\u003e\\n\u003chtml xsl:version=\\\"1.0\\\" \\n  xmlns:xsl=\\\"http://www.w3.org/1999/XSL/Transform\\\"\u003e\\n  \u003cbody style=\\\"font-family:Arial;font-size:12pt;background-color:#EEEEEE\\\"\u003e\\n    \u003cxsl:for-each select=\\\"breakfast_menu/food\\\"\u003e\\n      \u003cdiv style=\\\"background-color:teal;color:white;padding:4px\\\"\u003e\\n        \u003cspan style=\\\"font-weight:bold\\\"\u003e\\n          \u003cxsl:value-of select=\\\"name\\\"/\u003e - \\n        \u003c/span\u003e\\n        \u003cxsl:value-of select=\\\"price\\\"/\u003e\\n      \u003c/div\u003e\\n      \u003cdiv style=\\\"margin-left:20px;margin-bottom:1em;font-size:10pt\\\"\u003e\\n        \u003cp\u003e\\n          \u003cxsl:value-of select=\\\"description\\\"/\u003e\\n          \u003cspan style=\\\"font-style:italic\\\"\u003e (\\n            \u003cxsl:value-of select=\\\"calories\\\"/\u003e calories per serving)\\n          \u003c/span\u003e\\n        \u003c/p\u003e\\n      \u003c/div\u003e\\n    \u003c/xsl:for-each\u003e\\n  \u003c/body\u003e\\n\u003c/html\u003e\",     \"document\": \"\u003c?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?\u003e\\n\u003cbreakfast_menu\u003e\\n  \u003cfood\u003e\\n    \u003cname\u003eBelgian Waffles\u003c/name\u003e\\n    \u003cprice\u003e$5.95\u003c/price\u003e\\n    \u003cdescription\u003eTwo of our famous Belgian Waffles with plenty of real maple syrup\u003c/description\u003e\\n    \u003ccalories\u003e650\u003c/calories\u003e\\n  \u003c/food\u003e\\n  \u003cfood\u003e\\n    \u003cname\u003eStrawberry Belgian Waffles\u003c/name\u003e\\n    \u003cprice\u003e$7.95\u003c/price\u003e\\n    \u003cdescription\u003eLight Belgian waffles covered with strawberries and whipped cream\u003c/description\u003e\\n    \u003ccalories\u003e900\u003c/calories\u003e\\n  \u003c/food\u003e\\n  \u003cfood\u003e\\n    \u003cname\u003eBerry-Berry Belgian Waffles\u003c/name\u003e\\n    \u003cprice\u003e$8.95\u003c/price\u003e\\n    \u003cdescription\u003eLight Belgian waffles covered with an assortment of fresh berries and whipped cream\u003c/description\u003e\\n    \u003ccalories\u003e900\u003c/calories\u003e\\n  \u003c/food\u003e\\n  \u003cfood\u003e\\n    \u003cname\u003eFrench Toast\u003c/name\u003e\\n    \u003cprice\u003e$4.50\u003c/price\u003e\\n    \u003cdescription\u003eThick slices made from our homemade sourdough bread\u003c/description\u003e\\n    \u003ccalories\u003e600\u003c/calories\u003e\\n  \u003c/food\u003e\\n  \u003cfood\u003e\\n    \u003cname\u003eHomestyle Breakfast\u003c/name\u003e\\n    \u003cprice\u003e$6.95\u003c/price\u003e\\n    \u003cdescription\u003eTwo eggs, bacon or sausage, toast, and our ever-popular hash browns\u003c/description\u003e\\n    \u003ccalories\u003e950\u003c/calories\u003e\\n  \u003c/food\u003e\\n\u003c/breakfast_menu\u003e\"   } }"
+            }
+          }
+        ],
+        "scope": "global",
+        "name": "Workflow POST and PUT calls",
+        "type": "datatype.table",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_01DXNKVK4G42C5vnBfVVpMvtminSQuhFDHk": {
+      "unique_name": "variable_01DXNKVK4G42C5vnBfVVpMvtminSQuhFDHk",
+      "properties": {
+        "value": "2020-02-20T19:51:55Z",
+        "scope": "global",
+        "name": "Date Time",
+        "type": "datatype.date",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_01DXNLD9QXRMT2LApmoU6dRHyHlhUcnTPKS": {
+      "unique_name": "variable_01DXNLD9QXRMT2LApmoU6dRHyHlhUcnTPKS",
+      "properties": {
+        "value": 55.5,
+        "scope": "global",
+        "name": "Decimal",
+        "type": "datatype.number",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_01DXNLSW16WJK3kdpsHxjwkKTZqCK5vamCt": {
+      "unique_name": "variable_01DXNLSW16WJK3kdpsHxjwkKTZqCK5vamCt",
+      "properties": {
+        "value": 55,
+        "scope": "global",
+        "name": "Integer",
+        "type": "datatype.integer",
+        "is_required": false
+      },
+      "object_type": "variable"
+    },
+    "variable_01DXNM9TY39ON4xNvRzaoa1C6beEkFWZAtr": {
+      "unique_name": "variable_01DXNM9TY39ON4xNvRzaoa1C6beEkFWZAtr",
+      "properties": {
+        "value": "cisco",
+        "scope": "global",
+        "name": "String",
+        "type": "datatype.string",
+        "is_required": false
+      },
+      "object_type": "variable"
+    }
+  },
+  "table_types": {
+    "tabletype_01AE1APMG8VE56ySmqp4AdQg8EE7wNSYUad": {
+      "unique_name": "tabletype_01AE1APMG8VE56ySmqp4AdQg8EE7wNSYUad",
+      "data_type": "datatype.tabletype",
+      "display_name": "Adding actions to the worklfow",
+      "description": "Post and PUT ",
+      "columns": [
+        {
+          "name": "Name",
+          "title": "Name",
+          "type": "string"
+        },
+        {
+          "name": "PosyPayload",
+          "title": "POST PAYLOAD",
+          "type": "string"
+        },
+        {
+          "name": "PutPayload",
+          "title": "PUT PAYLOAD",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  }
+}
